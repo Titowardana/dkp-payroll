@@ -60,6 +60,13 @@ writable/session/*
 writable/uploads/*
 !writable/uploads/index.html
 
+# Backup SQL — berisi data pribadi
+writable/backups/*
+!writable/backups/index.html
+
+# Database schema with sample data
+app/Database/dkp_payroll.sql
+
 writable/debugbar/*
 
 php_errors.log
