@@ -197,31 +197,18 @@
     </div>
 </div>
 
-<!-- Extra Sections -->
-<div class="row mb-4">
-    <!-- TAMBAHAN PENGHASILAN PEGAWAI -->
+<!-- Extra Sections (Coming soon) -->
+<div class="row mb-4" style="display:none;">
     <div class="col-md-6">
         <h5 class="section-title mb-3">B. TAMBAHAN PENGHASILAN PEGAWAI</h5>
         <div class="grey-box">
-            <p class="text-muted small mb-3">Bagian ini mengikuti desain slip, tetapi datanya belum disimpan di database.</p>
-            <table class="table table-borderless table-sm mb-0">
-                <tr><td>- TPP Bruto</td><td class="text-end">Rp <input type="number" class="w-50 ms-2 text-end" value="0"></td></tr>
-                <tr><td>- TPP Bersih</td><td class="text-end">Rp <input type="number" class="w-50 ms-2 text-end" value="0"></td></tr>
-                <tr><td>- WP 1%</td><td class="text-end">Rp <input type="number" class="w-50 ms-2 text-end" value="0"></td></tr>
-                <tr><td>- PPh 21</td><td class="text-end">Rp <input type="number" class="w-50 ms-2 text-end" value="0"></td></tr>
-            </table>
+            <p class="text-muted small mb-3">Data dari SIPD (Coming soon)</p>
         </div>
     </div>
-    <!-- HONOR PENGELOLA -->
     <div class="col-md-6">
         <h5 class="section-title mb-3">C. HONOR PENGELOLA ADMINISTRASI KEUANGAN</h5>
         <div class="grey-box">
-            <p class="text-muted small mb-3">Bagian ini mengikuti desain slip, tetapi datanya belum disimpan di database.</p>
-            <table class="table table-borderless table-sm mb-0">
-                <tr><td>- Honor Bruto</td><td class="text-end">Rp <input type="number" class="w-50 ms-2 text-end" value="0"></td></tr>
-                <tr><td>- Honor Bersih</td><td class="text-end">Rp <input type="number" class="w-50 ms-2 text-end" value="0"></td></tr>
-                <tr><td>- PPh 21</td><td class="text-end">Rp <input type="number" class="w-50 ms-2 text-end" value="0"></td></tr>
-            </table>
+            <p class="text-muted small mb-3">Data dari SIPD (Coming soon)</p>
         </div>
     </div>
 </div>

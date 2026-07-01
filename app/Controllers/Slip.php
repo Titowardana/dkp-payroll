@@ -291,7 +291,7 @@ class Slip extends BaseController
             'total_pendapatan' => $totalPendapatan,
             'total_potongan' => $totalPotongan,
             'gaji_bersih' => $gajiBersih,
-            'status' => $this->request->getPost('status') ?: 'draft',
+            'status' => 'draft',
         ];
 
         try {

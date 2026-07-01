@@ -32,7 +32,7 @@ class Database extends \CodeIgniter\Database\Config
         'password' => '',
         'database' => ':memory:',
         'DBDriver' => 'SQLite3',
-        'DBPrefix' => 'db_',
+        'DBPrefix' => '',
         'pConnect' => false,
         'DBDebug'  => true,
         'cacheOn'  => false,

@@ -180,7 +180,10 @@
       </div>
       <div class="modal-footer border-0 d-flex justify-content-center pb-4 pt-0">
         <button type="button" class="btn btn-light px-4 shadow-sm" data-bs-dismiss="modal">Kembali</button>
-        <a href="<?= site_url('logout') ?>" class="btn btn-danger px-4 shadow-sm">Ya, Keluar Akun</a>
+        <form method="post" action="<?= site_url('logout') ?>" style="display:inline;">
+            <?= csrf_field() ?>
+            <button type="submit" class="btn btn-danger px-4 shadow-sm">Ya, Keluar Akun</button>
+        </form>
       </div>
     </div>
   </div>

@@ -114,6 +114,7 @@ class Backup extends BaseController
 
     public function download($file)
     {
+        $file = basename((string) $file);
         $path = $this->backupPath . $file;
         if (file_exists($path)) {
             return $this->response->download($path, null);
@@ -124,6 +125,7 @@ class Backup extends BaseController
     public function delete($file)
     {
         if ($this->request->getMethod() !== 'post') throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        $file = basename((string) $file);
         $path = $this->backupPath . $file;
         if (file_exists($path)) {
             unlink($path);
@@ -134,6 +136,7 @@ class Backup extends BaseController
 
     public function restore($file)
     {
+        $file = basename((string) $file);
         $path = $this->backupPath . $file;
         if (!file_exists($path)) {
             return redirect()->to(base_url('backup'))->with('backup_error', 'File backup tidak ditemukan.');

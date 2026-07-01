@@ -33,6 +33,13 @@ class Auth extends BaseController
         $attempts = session()->get('login_attempts', 0);
         $lockoutTime = session()->get('login_lockout', 0);
 
+        // Reset counter jika lockout sudah expired
+        if ($lockoutTime > 0 && time() >= $lockoutTime) {
+            session()->remove(['login_attempts', 'login_lockout']);
+            $attempts = 0;
+            $lockoutTime = 0;
+        }
+
         if ($attempts >= $maxAttempts && time() < $lockoutTime) {
             $remaining = ceil(($lockoutTime - time()) / 60);
             return redirect()->back()->withInput()->with('error', "Terlalu banyak percobaan login. Coba lagi dalam {$remaining} menit.");

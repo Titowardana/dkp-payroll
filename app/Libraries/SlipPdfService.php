@@ -95,8 +95,8 @@ class SlipPdfService
 
     private function signerConfig(string $key, string $default): string
     {
-        static $config = null;
-        if ($config === null && class_exists(\App\Models\SystemConfigModel::class)) {
+        static $config = [];
+        if (!array_key_exists($key, $config) && class_exists(\App\Models\SystemConfigModel::class)) {
             try {
                 $dbConfig = (new \App\Models\SystemConfigModel())->where('config_key', 'signer_' . $key)->first();
                 $config[$key] = $dbConfig ? ($dbConfig['config_value'] ?? $default) : $default;
