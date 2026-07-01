@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Database\Seeds;
+
+use CodeIgniter\Database\Seeder;
+
+class PegawaiSeeder extends Seeder
+{
+    public function run()
+    {
+        $this->db->table('pegawai')->insertBatch([
+            [
+                'nip'          => '198001012006041001',
+                'nama'         => 'Dr. Andi Pratama, S.Pi, M.Si',
+                'nik'          => '3171010101800001',
+                'npwp'         => '99.999.999.9-999.999',
+                'tempat_lahir' => 'Jakarta',
+                'tanggal_lahir' => '1980-01-01',
+                'jenis_kelamin' => 'L',
+                'tipe_jabatan' => 'Struktural',
+                'nama_jabatan' => 'Kepala Dinas',
+                'eselon'       => 'II.a',
+                'status_asn'   => 'PNS',
+                'golongan'     => 'IV/c',
+                'masa_kerja_golongan' => 12,
+                'status_pernikahan'   => 'Menikah',
+                'jumlah_istri_suami'  => 1,
+                'jumlah_anak'         => 2,
+                'jumlah_tanggungan'   => 3,
+                'pasangan_pns'        => 0,
+                'kode_bank'   => '008',
+                'nama_bank'   => 'Bank Mandiri',
+                'nomor_rekening' => '1234567890',
+                'gaji_pokok'  => 3500000,
+                'is_active'   => 1,
+            ],
+            [
+                'nip'          => '198502152008012002',
+                'nama'         => 'Ir. Siti Rahmawati, M.MA',
+                'nik'          => '3171021502850002',
+                'npwp'         => '88.888.888.8-888.888',
+                'tempat_lahir' => 'Bandung',
+                'tanggal_lahir' => '1985-02-15',
+                'jenis_kelamin' => 'P',
+                'tipe_jabatan' => 'Struktural',
+                'nama_jabatan' => 'Kepala Bidang',
+                'eselon'       => 'III.a',
+                'status_asn'   => 'PNS',
+                'golongan'     => 'IV/b',
+                'masa_kerja_golongan' => 8,
+                'status_pernikahan'   => 'Menikah',
+                'jumlah_istri_suami'  => 0,
+                'jumlah_anak'         => 1,
+                'jumlah_tanggungan'   => 2,
+                'pasangan_pns'        => 1,
+                'nip_pasangan' => '198703202010012003',
+                'kode_bank'   => '009',
+                'nama_bank'   => 'Bank BNI',
+                'nomor_rekening' => '2345678901',
+                'gaji_pokok'  => 3200000,
+                'is_active'   => 1,
+            ],
+            [
+                'nip'          => '199005202011011003',
+                'nama'         => 'Bambang Supriyadi',
+                'nik'          => '3171032005900003',
+                'npwp'         => '77.777.777.7-777.777',
+                'tempat_lahir' => 'Surabaya',
+                'tanggal_lahir' => '1990-05-20',
+                'jenis_kelamin' => 'L',
+                'tipe_jabatan' => 'Fungsional',
+                'nama_jabatan' => 'Analis Kepegawaian',
+                'eselon'       => null,
+                'status_asn'   => 'PNS',
+                'golongan'     => 'III/c',
+                'masa_kerja_golongan' => 5,
+                'status_pernikahan'   => 'Belum Menikah',
+                'jumlah_istri_suami'  => 0,
+                'jumlah_anak'         => 0,
+                'jumlah_tanggungan'   => 0,
+                'pasangan_pns'        => 0,
+                'kode_bank'   => '002',
+                'nama_bank'   => 'Bank BRI',
+                'nomor_rekening' => '3456789012',
+                'gaji_pokok'  => 2900000,
+                'is_active'   => 1,
+            ],
+        ]);
+    }
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Slip Gaji - {{NAMA_PEGAWAI}}</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 8mm 8mm 8mm 8mm;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Calibri, Arial, sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.2;
+            color: #000;
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+
+        .sheet {
+            border: 2px solid #000;
+            padding: 5mm 6mm 4mm 6mm;
+        }
+
+        /* ── Header ── */
+        .header { text-align: center; margin-bottom: 5px; }
+        .header .title  { font-weight: bold; font-size: 13pt; }
+        .header .org    { font-weight: bold; font-size: 10pt; }
+        .header .periode { font-weight: bold; font-size: 10pt; }
+
+        /* ── Info Pegawai ── */
+        .info { width: 100%; border-collapse: collapse; margin: 4px 0 6px 0; }
+        .info td { padding: 1px 3px; vertical-align: top; font-size: 9pt; }
+        .info .label { width: 100px; }
+        .info .sep { width: 8px; }
+
+        /* ── Section Label ── */
+        .section-label { font-weight: bold; margin: 4px 0 2px 0; font-size: 9pt; }
+
+        /* ── Main Gaji Table ── */
+        table.grid {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            font-size: 8.8pt;
+        }
+        .grid th, .grid td {
+            border: 1px solid #000;
+            padding: 2px 3px;
+            vertical-align: middle;
+        }
+        .grid th { font-weight: bold; text-align: center; background: #f5f5f5; padding: 2px 3px; }
+        .text-right  { text-align: right; }
+        .text-center { text-align: center; }
+        .sum-row td  { font-weight: bold; background: #f5f5f5; }
+        .net-row td  { font-weight: bold; font-size: 10pt; }
+
+        /* ── TPP & Honor (compact 2-col layout) ── */
+        .section-2col { width: 100%; border-collapse: collapse; margin-top: 4px; }
+        .section-2col td { border: 1px solid #000; padding: 2px 4px; font-size: 8.5pt; vertical-align: middle; }
+        .section-2col .label-col { width: 25%; }
+        .section-2col .val-col   { width: 12%; text-align: right; }
+        .section-2col .rp-col    { width: 5%;  text-align: center; }
+        .section-2col .bold      { font-weight: bold; }
+
+        /* ── Signature ── */
+        .signature-block { margin-top: 6px; text-align: right; font-size: 9pt; }
+        .signature-block .spacer { height: 42px; display: block; }
+        .signature-block .name { font-weight: bold; }
+
+        /* ── Footer ── */
+        .footer-note { font-size: 7.5pt; color: #555; margin-top: 3px; }
+        .jht-note    { font-size: 7.5pt; color: #555; margin: 1px 0 3px 0; }
+    </style>
+</head>
+<body>
+<div class="sheet">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="title">SLIP GAJI</div>
+        <div class="org">DINAS KELAUTAN DAN PERIKANAN PROVINSI KEPULAUAN RIAU</div>
+        <div class="periode">BULAN : {{NAMA_BULAN}} {{TAHUN}}</div>
+    </div>
+
+    <!-- INFO PEGAWAI -->
+    <table class="info">
+        <tr>
+            <td class="label">Nama</td><td class="sep">:</td>
+            <td><strong>{{NAMA_PEGAWAI}}</strong></td>
+            <td class="label">Jabatan</td><td class="sep">:</td>
+            <td>{{JABATAN}}</td>
+        </tr>
+        <tr>
+            <td class="label">NIP / NIPPPK</td><td class="sep">:</td>
+            <td>{{NIP}}</td>
+            <td class="label">Golongan</td><td class="sep">:</td>
+            <td>{{GOLONGAN}}</td>
+        </tr>
+        <tr>
+            <td class="label">Status</td><td class="sep">:</td>
+            <td>{{STATUS_ASN}}</td>
+            <td class="label">Bank / Rek</td><td class="sep">:</td>
+            <td>{{BANK}} / {{NOMOR_REKENING}}</td>
+        </tr>
+    </table>
+
+    <!-- A. GAJI -->
+    <div class="section-label">A. GAJI</div>
+    <table class="grid">
+        <thead>
+            <tr>
+                <th style="width:28px">No</th>
+                <th>Penghasilan</th>
+                <th style="width:22px">Rp</th>
+                <th style="width:95px">Jumlah</th>
+                <th style="width:28px">No</th>
+                <th>Potongan</th>
+                <th style="width:22px">Rp</th>
+                <th style="width:95px">Jumlah</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">1</td><td>Gaji Pokok</td>
+                <td class="text-center">Rp</td><td class="text-right">{{GAJI_POKOK}}</td>
+                <td class="text-center">1</td><td>Pajak PPh 21</td>
+                <td class="text-center">Rp</td><td class="text-right">{{POTONGAN_PPH21}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">2</td><td>Tunjangan Istri/Suami</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_PASANGAN}}</td>
+                <td class="text-center">2</td><td>BPJS Kes 4%</td>
+                <td class="text-center">Rp</td><td class="text-right">{{IURAN_JKN}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">3</td><td>Tunjangan Anak</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_ANAK}}</td>
+                <td class="text-center">3</td><td>IWP 1%</td>
+                <td class="text-center">Rp</td><td class="text-right">{{POTONGAN_IWP}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">4</td><td>Tunjangan Jabatan/Eselon</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_JABATAN}}</td>
+                <td class="text-center">4</td><td>JKK</td>
+                <td class="text-center">Rp</td><td class="text-right">{{IURAN_JKK}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">5</td><td>Tunjangan Fungsional Umum</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_FUNGSIONAL_UMUM}}</td>
+                <td class="text-center">5</td><td>JKM</td>
+                <td class="text-center">Rp</td><td class="text-right">{{IURAN_JKM}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">6</td><td>Tunjangan Fungsional</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_FUNGSIONAL}}</td>
+                <td class="text-center">6</td><td>Zakat</td>
+                <td class="text-center">Rp</td><td class="text-right">{{ZAKAT}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">7</td><td>Tunjangan Beras</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_BERAS}}</td>
+                <td class="text-center">7</td><td>BPJS TK / Pensiun</td>
+                <td class="text-center">Rp</td><td class="text-right">{{IURAN_PENSIUN}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">8</td><td>Tunjangan PPh 21</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_PPH}}</td>
+                <td class="text-center">8</td><td>Tapera</td>
+                <td class="text-center">Rp</td><td class="text-right">{{IURAN_TAPERA}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">9</td><td>Tunjangan Khusus Papua</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_KHUSUS_PAPUA}}</td>
+                <td class="text-center">9</td><td>Bulog</td>
+                <td class="text-center">Rp</td><td class="text-right">{{BULOG}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">10</td><td>Tunj. JHT *)</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_JHT}}</td>
+                <td class="text-center">10</td><td>Potongan Lainnya</td>
+                <td class="text-center">Rp</td><td class="text-right">{{POTONGAN_LAINNYA}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">11</td><td>Tunjangan Lainnya</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TUNJANGAN_LAINNYA}}</td>
+                <td class="text-center">11</td><td>Iuran JHT *)</td>
+                <td class="text-center">Rp</td><td class="text-right">{{IURAN_JHT}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">12</td><td>Pembulatan</td>
+                <td class="text-center">Rp</td><td class="text-right">{{PEMBULATAN}}</td>
+                <td class="text-center"></td><td></td>
+                <td class="text-center"></td><td class="text-right"></td>
+            </tr>
+            <!-- Summary row -->
+            <tr class="sum-row">
+                <td colspan="2">Jumlah Penghasilan</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TOTAL_PENDAPATAN}}</td>
+                <td colspan="2">Jumlah Potongan Gaji</td>
+                <td class="text-center">Rp</td><td class="text-right">{{TOTAL_POTONGAN}}</td>
+            </tr>
+            <tr class="net-row">
+                <td colspan="2">Gaji Bersih</td>
+                <td class="text-center">Rp</td><td class="text-right"><strong>{{GAJI_BERSIH}}</strong></td>
+                <td colspan="4"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="jht-note">*) Iuran JHT Pemberi Kerja ditransfer langsung ke BPJS Ketenagakerjaan (bukan diterima pegawai).</p>
+
+    <!-- B & C — Compact 2-column layout side by side -->
+    <table style="width:100%; border-collapse:collapse; margin-top:4px;">
+        <tr>
+            <!-- Kolom Kiri: B. Tambahan Penghasilan Pegawai -->
+            <td style="width:50%; vertical-align:top; padding-right:3px;">
+                <div class="section-label">B. TAMBAHAN PENGHASILAN PEGAWAI</div>
+                <table class="grid" style="font-size:8.3pt;">
+                    <tr>
+                        <td>- TPP Bruto</td><td style="width:22px" class="text-center">Rp</td><td style="width:70px" class="text-right">{{TPP_BRUTO}}</td>
+                        <td>- WP 1%</td><td style="width:22px" class="text-center">Rp</td><td style="width:70px" class="text-right">{{TPP_WP1}}</td>
+                    </tr>
+                    <tr>
+                        <td>- TPP Bersih</td><td class="text-center">Rp</td><td class="text-right">{{TPP_BERSIH}}</td>
+                        <td>- PPh 21</td><td class="text-center">Rp</td><td class="text-right">{{TPP_PPH21}}</td>
+                    </tr>
+                    <tr class="sum-row">
+                        <td>TPP Bersih</td><td class="text-center">Rp</td><td class="text-right">{{TPP_BERSIH}}</td>
+                        <td>Jml Potongan TPP</td><td class="text-center">Rp</td><td class="text-right">{{TPP_POTONGAN_TOTAL}}</td>
+                    </tr>
+                </table>
+            </td>
+            <!-- Kolom Kanan: C. Honor Pengelola -->
+            <td style="width:50%; vertical-align:top; padding-left:3px;">
+                <div class="section-label">C. HONOR PENGELOLA ADMINISTRASI KEUANGAN</div>
+                <table class="grid" style="font-size:8.3pt;">
+                    <tr>
+                        <td>- Honor Bruto</td><td style="width:22px" class="text-center">Rp</td><td style="width:70px" class="text-right">{{HONOR_BRUTO}}</td>
+                        <td>- PPh 21</td><td style="width:22px" class="text-center">Rp</td><td style="width:70px" class="text-right">{{HONOR_PPH21}}</td>
+                    </tr>
+                    <tr class="sum-row">
+                        <td>Honor Bersih</td><td class="text-center">Rp</td><td class="text-right">{{HONOR_BERSIH}}</td>
+                        <td>Total Penghasilan Bersih</td><td class="text-center">Rp</td><td class="text-right">{{TOTAL_PENGHASILAN_BERSIH}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Tanda Tangan + Footer -->
+    <table style="width:100%; margin-top:5px; border-collapse:collapse;">
+        <tr>
+            <td style="width:55%; font-size:8pt; color:#555; vertical-align:bottom;">
+                Dicetak: {{WAKTU_CETAK}}
+            </td>
+            <td style="width:45%; text-align:right; font-size:9pt; vertical-align:top;">
+                Tanjungpinang, {{TANGGAL_CETAK}}<br>
+                {{JABATAN_TANDA_TANGAN}},<br>
+                <span style="display:inline-block; height:38px;"></span><br>
+                <strong>{{NAMA_TANDA_TANGAN}}</strong><br>
+                NIP. {{NIP_TANDA_TANGAN}}
+            </td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>
