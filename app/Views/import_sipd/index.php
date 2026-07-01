@@ -148,6 +148,11 @@ $errs = session('import_errors') ?? [];
                 <div>
                     <h5 class="fw-bold text-dark mb-1">Panduan Import</h5>
                     <p class="text-muted mb-0" style="font-size:0.9rem;">Upload file Excel bersumber dari sistem SIPD format <b>.xls</b> atau <b>.xlsx</b>. Sistem akan otomatis mendeteksi pegawai baru, memperbarui data lama, dan membuat draft slip gaji sesuai periode yang Anda tentukan.</p>
+                    <div class="mt-2">
+                        <a href="<?= base_url('assets/templates/import_sipd_template.xlsx') ?>" class="btn btn-sm btn-outline-success fw-semibold" style="border-radius:8px;">
+                            <i class="fas fa-download me-1"></i> Download Template Excel
+                        </a>
+                    </div>
                 </div>
             </div>
 
